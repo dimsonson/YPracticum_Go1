@@ -2,11 +2,10 @@ package main
 
 import (
 	"fmt"
-
-	"workspace/user/repo/somepackage"
+	//"workspace/user/repo/somepackage"
 )
 
 func main() {
-	somepackage.Func()
+	//somepackage.Func()
 	fmt.Println("OK")
 }
