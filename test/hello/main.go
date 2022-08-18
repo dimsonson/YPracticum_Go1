@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"somemodule/somepackage"
+	"example/greetings"
 )
 
 func main() {
-	somepackage.Func()
+	greetings.Func()
 	fmt.Println("OK")
 }
