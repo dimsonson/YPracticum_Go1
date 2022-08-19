@@ -1,0 +1,13 @@
+package arrint // import "command-line-arguments"
+
+
+TYPES
+
+type ArrInt []int
+    массив типа int
+
+func Add(a, b ArrInt) ArrInt
+    Метод Add суммирует знаения массивов
+
+func (a ArrInt) String() string
+    Метод String преобразует ArrInt в строку и возвращает её.
