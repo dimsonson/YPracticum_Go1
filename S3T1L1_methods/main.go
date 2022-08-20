@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"time"
 )
 
@@ -13,18 +14,23 @@ type Stopwatch struct {
 func main() {
 	sw := Stopwatch{}
 	sw.Start()
+    log.Println("Старт таймера",sw) 
 
 	time.Sleep(1 * time.Second)
 	sw.SaveSplit()
+    log.Println(sw)
 
 	time.Sleep(500 * time.Millisecond)
 	sw.SaveSplit()
+    log.Println(sw)
 
 	time.Sleep(300 * time.Millisecond)
 	sw.SaveSplit()
+    log.Println(sw)
+	//log.Println()
 
 	fmt.Println(sw.GetResults())
-	//fmt.Println(sw)
+	log.Println(sw)
 }
 
 // запустить/сбросить секундомер
@@ -42,6 +48,14 @@ func (stw *Stopwatch) SaveSplit() {
 func (stw *Stopwatch) GetResults() []time.Duration {
 	return stw.Split
 }
+
+/* f, err := os.OpenFile("testlogfile", os.O_RDWR | os.O_CREATE | os.O_APPEND, 0666)
+if err != nil {
+    log.Fatalf("error opening file: %v", err)
+}
+defer f.Close()
+log.SetOutput(f)
+log.Println("This is a test log entry") */
 
 /* package main
 
