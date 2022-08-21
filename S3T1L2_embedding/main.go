@@ -20,15 +20,15 @@ func (l *LogExtended) SetLogLevel(logLvl LogLevel) {
 }
 
 func (l *LogExtended) Infoln(msg string) {
-	println(0, "INFO", msg)
+	l.println(0, "INFO", msg)
 }
 
-func (logE *LogExtended) Warnln(msg string) {
-	println(1, "WARN", msg)
+func (l *LogExtended) Warnln(msg string) {
+	l.println(1, "WARN", msg)
 }
 
-func (logE *LogExtended) Errorln(msg string){
-	println(2, "ERR", msg)
+func (l *LogExtended) Errorln(msg string) {
+	l.println(2, "ERR", msg)
 }
 
 type LogLevel int
@@ -44,12 +44,12 @@ type LogExtended struct {
 	logLevel LogLevel // LogLevel это enum
 }
 
-func (l LogLevel) enumIndex() int {
+/* func (l LogLevel) enumIndex() int {
 	return int(l)
-}
+} */
 
 func (l *LogExtended) println(srcLogLvl LogLevel, prefix, msg string) {
-	if l.logLevel <= srcLogLvl {
+	if srcLogLvl < l.logLevel {
 		return
 	}
 
