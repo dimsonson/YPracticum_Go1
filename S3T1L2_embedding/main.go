@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	logger := new(LogExtended)
+	logger := NewLogExtended()
 	logger.SetLogLevel(Warning)
 	logger.Infoln("Не должно напечататься")
 	logger.Warnln("Hello")
