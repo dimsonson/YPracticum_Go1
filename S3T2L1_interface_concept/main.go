@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	
 	pers := person.Person{}
 	comp := company.Company{}
 
