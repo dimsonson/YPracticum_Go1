@@ -39,6 +39,8 @@ const (
 	Error
 )
 
+//var p LogExtended
+
 type LogExtended struct {
 	*log.Logger
 	logLevel LogLevel // LogLevel это enum
