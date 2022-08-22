@@ -13,7 +13,7 @@ func main() {
 	generator := randbyte.New(time.Now().UnixNano()) // в качестве затравки передаём ему
 	//текущее время, и при каждом запуске оно будет разным.
 
-	buf := make([]byte, 16)
+	buf := make([]byte, 8)
 
 	for i := 0; i < 5; i++ {
 		n, _ := generator.Read(buf) // единственный доступный метод, но он нам и нужен.
