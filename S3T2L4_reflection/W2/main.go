@@ -113,4 +113,46 @@ func main() {
 
 Реализуйте применение заклинаний с помощью рефлексии. Каждое заклинание удовлетворяет интерфейсу Spell —
 можно узнать, на какую характеристику объекта и на какую величину оно влияет.
+
+Готовы проверить себя?
+
+
+Правильный ответ
+Да
+func CastTo(spell Spell, object interface{}) {
+    if recv, ok := object.(CastReceiver); ok {
+        recv.ReceiveSpell(spell)
+        return
+    }
+
+    val := reflect.ValueOf(object)
+
+    // проверяем, что переданный объект — указатель на структуру
+    if val.Kind() != reflect.Ptr || val.Elem().Kind() != reflect.Struct {
+        return
+    }
+
+    // ищем в структуре нужную характеристику
+    field := val.Elem().FieldByName(spell.Char())
+    // не нашли
+    if !field.IsValid() {
+        return
+    }
+
+    // нашли, но изменить её нельзя
+    if !field.CanSet() {
+        return
+    }
+
+    // тип найденного поля — не целое число
+    if field.Kind() != reflect.Int && field.Kind() != reflect.Int8 &&
+        field.Kind() != reflect.Int16 && field.Kind() != reflect.Int32 &&
+        field.Kind() != reflect.Int64 {
+        return
+    }
+
+    field.SetInt(field.Int() + int64(spell.Value()))
+
+    log.Printf("Casted spell %s to %#v", spell.Name(), object)
+} 
 */
