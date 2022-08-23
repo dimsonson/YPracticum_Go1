@@ -100,6 +100,7 @@ func main() {
 
 	fmt.Println(player)
 	fmt.Println(enemies...)
+
 }
 
 /*
@@ -154,5 +155,5 @@ func CastTo(spell Spell, object interface{}) {
     field.SetInt(field.Int() + int64(spell.Value()))
 
     log.Printf("Casted spell %s to %#v", spell.Name(), object)
-} 
+}
 */
