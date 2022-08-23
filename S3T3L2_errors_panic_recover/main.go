@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type input struct {
 	a       int
@@ -24,11 +26,20 @@ func main() {
 }
 
 func test(a, b, counter int) (err error) {
-
+	defer func() {
+		if p := recover(); p != nil {
+			err = fmt.Errorf("%v", p)
+		}
+	}()
+	f(a, b, counter)
 	return err
 }
-func f(a1, b1, counter1 int) (a, b, counter int) {
-	return b1, a1 / b1, counter1 - 1
+
+func f(a, b, counter int) {
+	if counter == 0 {
+		panic(`counter equals 0`)
+	}
+	f(b, a/b, counter-1)
 }
 
 /*
