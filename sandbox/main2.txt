@@ -1,0 +1,18 @@
+package main
+
+import "fmt"
+
+func main() {
+	y := 1
+
+	factors := map[int]int{
+		1: 2,
+		2: 3,
+		3: 1,
+	}
+
+	for _, val := range factors {
+		y *= factors[val]
+	}
+	fmt.Println(y)
+}

@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+	x := 0
+
+	terms := []int{1, 2, 3}
+	for _, term := range terms {
+		if term%2 == 0 {
+			x += term
+		}
+	}
+	fmt.Println(x)
+}
