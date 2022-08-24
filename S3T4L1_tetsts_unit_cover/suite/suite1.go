@@ -1,4 +1,4 @@
-package suite
+package suite1
 
 import (
 	"testing"

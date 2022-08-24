@@ -1,4 +1,4 @@
-module github.com/dimsonson/YPracticum_Go1/S3T4L1_tetsts_unit_cover/suite
+module suite1
 
 go 1.19
 
