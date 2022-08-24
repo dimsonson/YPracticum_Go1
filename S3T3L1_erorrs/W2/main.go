@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -20,6 +21,7 @@ import (
 Строка должна иметь два пробела (no two spaces).
 
 В скобках приведены тексты возвращаемых ошибок.
+
 Функция должна находить все возможные ошибки за один вызов.
 
 Результат должен содержать слайс ошибок, по которым строка не прошла проверку, или быть nil.
@@ -57,26 +59,46 @@ func main() {
 }
 
 func MyCheck(input string) error {
+	var (
+		err      SliceError
+		spaces   int
+		hasDigit bool
+	)
+
 	if !strings.Contains(input, " ") {
-		return fmt.Errorf("дава пробела")
+		return err
 	}
 
-	if len(input) >= 20 {
-		return fmt.Errorf("меньше 20 символов")
+	if len([]rune(input)) >= 20 {
+		err = SliceError{errors.New(`line is too long`)}
 	}
 
 	for _, s := range input {
-		if unicode.IsDigit(s) {
-			return fmt.Errorf("цифра")
+		if s == ' ' {
+			spaces++
+			//continue
+		} else if unicode.IsDigit(s) {
+			hasDigit = true
 		}
 	}
-	return nil
+	if hasDigit {
+		err = append(err, errors.New(`found numbers`))
+	}
+	if spaces != 2 {
+		err = append(err, errors.New(`no two spaces`))
+	}
+	if len(err) == 0 {
+		return nil
+	}
+	return err
 }
 
-type MyError struct {
-	SlErr []error
-}
+type SliceError []error
 
-func (sl MyError) Error() string {
-	return fmt.Sprintf("%v: %v", te.Time.Format(`2006/01/02 15:04:05`), te.Text)
+func (errs SliceError) Error() string {
+	var out string
+	for _, err := range errs {
+		out += err.Error() + ";"
+	}
+	return strings.TrimRight(out, `;`)
 }

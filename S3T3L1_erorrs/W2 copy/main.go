@@ -45,6 +45,7 @@ func main() {
 			continue
 		}
 		ret = strings.TrimRight(ret, "\n")
+		//fmt.Println(ret)
 		if ret == `q` {
 			break
 		}
