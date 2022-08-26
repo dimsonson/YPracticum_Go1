@@ -1,30 +1,30 @@
 package main
-
+//тест использования функций в другом файле
 import (
-	"fmt"
 	"strconv"
+	_"fmt"
 )
 
-type Stringer interface {
-	String() string
+type Stringer1 interface {
+	String1() string
 }
 
-type myType int
+type myType1 int
 
 // myType реализует интерфейс Stringer
-func (t myType) String() string { //(string, error) {
+func (t myType) String1() string { //(string, error) {
 	//err := nil
 	return strconv.Itoa(int(t)) //, err
 	// представление типа myType в виде строки
 }
 
-func main() {
+/* func main() {
 	a := myType(5)
 	//var a myType = 5
 	//a := new(myType) это инциализация структуры она здесь не работает
 	//a = 5
-	fmt.Printf("%T", a.String1())
-}
+	fmt.Printf("%T", a.String())
+} */
 
 /* type Stringer1 interface {
 	String1() string
