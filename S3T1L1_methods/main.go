@@ -14,19 +14,19 @@ type Stopwatch struct {
 func main() {
 	sw := Stopwatch{}
 	sw.Start()
-    log.Println("Старт таймера",sw) 
+	log.Println("Старт таймера", sw)
 
 	time.Sleep(1 * time.Second)
 	sw.SaveSplit()
-    log.Println(sw)
+	log.Println(sw)
 
 	time.Sleep(500 * time.Millisecond)
 	sw.SaveSplit()
-    log.Println(sw)
+	log.Println(sw)
 
 	time.Sleep(300 * time.Millisecond)
 	sw.SaveSplit()
-    log.Println(sw)
+	log.Println(sw)
 	//log.Println()
 
 	fmt.Println(sw.GetResults())
