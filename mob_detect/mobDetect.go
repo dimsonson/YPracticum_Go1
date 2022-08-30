@@ -13,7 +13,7 @@ var (
 	lock sync.Mutex
 )
 
-func initPhones() {
+/* func initPhones() {
 	lock.Lock()
 	defer lock.Unlock()
 
@@ -268,4 +268,5 @@ func IsMobileDevice(userAgent string) bool {
 		IsMobileBrowser(userAgent) ||
 		IsPhone(userAgent) ||
 		IsTablet(userAgent)
-}
+ }
+ */
